@@ -7,8 +7,8 @@ _"The Koans walk you along the path to enlightenment in order to learn Ruby. The
 ### Running tests
 
 ```bash
-$> cd src
-$> rake
+cd src
+rake
 ```
 
 ### License
