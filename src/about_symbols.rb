@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/neo')
+require File.expand_path("#{File.dirname(__FILE__)}/neo")
 
 class AboutSymbols < Neo::Koan
   def test_symbols_are_symbols
@@ -19,13 +19,13 @@ class AboutSymbols < Neo::Koan
     symbol1 = :a_symbol
     symbol2 = :a_symbol
 
-    assert_equal true, symbol1           == symbol2
-    assert_equal true, symbol1.object_id == symbol2.object_id
+    assert_equal true, symbol1 == symbol2
+    assert_equal true, symbol1.equal?(symbol2)
   end
 
   def test_method_names_become_symbols
-    symbols_as_strings = Symbol.all_symbols.map { |x| x.to_s }
-    assert_equal true, symbols_as_strings.include?("test_method_names_become_symbols")
+    symbols_as_strings = Symbol.all_symbols.map(&:to_s)
+    assert_equal true, symbols_as_strings.include?('test_method_names_become_symbols')
   end
 
   # THINK ABOUT IT:
@@ -37,44 +37,45 @@ class AboutSymbols < Neo::Koan
   # was never defined. (Symbol.all_symbols.include?(:never_defined) => true)
   # So first we need convert the list of symbols to strings.
 
-  in_ruby_version("mri") do
-    RubyConstant = "What is the sound of one hand clapping?"
-    def test_constants_become_symbols
-      all_symbols_as_strings = Symbol.all_symbols.map { |x| x.to_s }
+  in_ruby_version('mri') do
+    RUBY_CONSTANT = 'What is the sound of one hand clapping?' # rubocop:disable Lint/ConstantDefinitionInBlock
 
-      assert_equal false, all_symbols_as_strings.include?(RubyConstant)
+    def test_constants_become_symbols
+      all_symbols_as_strings = Symbol.all_symbols.map(&:to_s)
+
+      assert_equal false, all_symbols_as_strings.include?(RUBY_CONSTANT)
     end
   end
 
   def test_symbols_can_be_made_from_strings
-    string = "catsAndDogs"
-    assert_equal :"catsAndDogs", string.to_sym
+    string = 'catsAndDogs'
+    assert_equal :catsAndDogs, string.to_sym
   end
 
   def test_symbols_with_spaces_can_be_built
     symbol = :"cats and dogs"
 
-    assert_equal "cats and dogs".to_sym, symbol
+    assert_equal 'cats and dogs'.to_sym, symbol
   end
 
   def test_symbols_with_interpolation_can_be_built
-    value = "and"
+    value = 'and'
     symbol = :"cats #{value} dogs"
 
-    assert_equal "cats and dogs".to_sym, symbol
+    assert_equal 'cats and dogs'.to_sym, symbol
   end
 
   def test_to_s_is_called_on_interpolated_symbols
     symbol = :cats
     string = "It is raining #{symbol} and dogs."
 
-    assert_equal "It is raining cats and dogs.", string
+    assert_equal 'It is raining cats and dogs.', string
   end
 
   def test_symbols_are_not_strings
     symbol = :ruby
     assert_equal false, symbol.is_a?(String)
-    assert_equal false, symbol.eql?("ruby")
+    assert_equal false, symbol.eql?('ruby')
   end
 
   def test_symbols_do_not_have_string_methods
@@ -95,7 +96,7 @@ class AboutSymbols < Neo::Koan
   end
 
   def test_symbols_can_be_dynamically_created
-    assert_equal :catsdogs, ("cats" + "dogs").to_sym
+    assert_equal :catsdogs, 'catsdogs'.to_sym
   end
 
   # THINK ABOUT IT:

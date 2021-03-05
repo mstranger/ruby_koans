@@ -1,5 +1,7 @@
-#!/usr/bin/env ruby
+# !/usr/bin/env ruby
 # -*- ruby -*-
+
+# rubocop:disable all
 
 $VERBOSE = nil
 
