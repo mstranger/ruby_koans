@@ -4,32 +4,32 @@ AllCops:
   TargetRubyVersion: 2.7
   NewCops: enable
 
+Style/Documentation:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+# allow class A::B
 Style/ClassAndModuleChildren:
   Enabled: false
 
 Lint/EmptyClass:
   Enabled: false
 
-Lint/AmbiguousBlockAssociation:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
 Metrics/ClassLength:
-  Max: 160
+  Max: 200
 
 Metrics/MethodLength:
   Max: 15
 
 Metrics/AbcSize:
-  Max: 22
+  Max: 23
 
+# allow method names with 'set_'
 Naming/AccessorMethodName:
   Enabled: false
 
+# allow 1-letter params (a, b, ...)
 Naming/MethodParameterName:
   MinNameLength: 1

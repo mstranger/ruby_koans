@@ -10,6 +10,7 @@ class AboutClasses < Neo::Koan
   end
 
   # ------------------------------------------------------------------
+  # rubocop:disable Style/EvalWithLocation
 
   class Dog2
     def set_name(a_name)
@@ -34,7 +35,7 @@ class AboutClasses < Neo::Koan
     end
 
     assert_raise(SyntaxError) do
-      eval 'fido.@name' # rubocop:disable Style/EvalWithLocation
+      eval 'fido.@name'
       # NOTE: Using eval because the above line is a syntax error.
     end
   end
@@ -50,12 +51,11 @@ class AboutClasses < Neo::Koan
     fido = Dog2.new
     fido.set_name('Fido')
 
-    # string version
-    assert_equal 'Fido', fido.instance_eval('@name') # rubocop:disable Style/EvalWithLocation
-    # string version
-    assert_equal 'Fido', fido.instance_eval { @name } # rubocop:disable Lint/AmbiguousBlockAssociation
+    assert_equal 'Fido', fido.instance_eval('@name') # string version
+    assert_equal('Fido', fido.instance_eval { @name }) # string version
   end
 
+  # rubocop:enable Style/EvalWithLocation
   # ------------------------------------------------------------------
 
   class Dog3

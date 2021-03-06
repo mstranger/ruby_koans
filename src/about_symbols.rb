@@ -38,7 +38,7 @@ class AboutSymbols < Neo::Koan
   # So first we need convert the list of symbols to strings.
 
   in_ruby_version('mri') do
-    RUBY_CONSTANT = 'What is the sound of one hand clapping?' # rubocop:disable Lint/ConstantDefinitionInBlock
+    RUBY_CONSTANT = 'What is the sound of one hand clapping?'.freeze # rubocop:disable Lint/ConstantDefinitionInBlock
 
     def test_constants_become_symbols
       all_symbols_as_strings = Symbol.all_symbols.map(&:to_s)
