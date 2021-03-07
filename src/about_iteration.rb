@@ -97,8 +97,8 @@ class AboutIteration < Neo::Koan
     assert_equal [11, 12, 13], result
 
     # Files act like a collection of lines
-    file_name = File.expand_path("#{File.dirname(__FILE__)}/example_file.txt")
-    File.open(file_name) do |file|
+    example_file = File.expand_path("#{File.dirname(__FILE__)}/misc/example_file.txt")
+    File.open(example_file) do |file|
       upcase_lines = file.map { |line| line.strip.upcase }
       assert_equal %w[THIS IS A TEST], upcase_lines
     end
