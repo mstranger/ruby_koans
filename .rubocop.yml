@@ -33,3 +33,6 @@ Naming/AccessorMethodName:
 # allow 1-letter params (a, b, ...)
 Naming/MethodParameterName:
   MinNameLength: 1
+
+Style/MissingRespondToMissing:
+  Enabled: false
